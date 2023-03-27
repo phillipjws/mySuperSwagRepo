@@ -20,7 +20,7 @@ public class A3Tester {
 		*/
 		
 		/* Part 1: */
-		testAddFront();
+		// testAddFront();
 		// testAddBack();
 		// testSizeAndIsEmpty();
 		// testRemoveFront();
@@ -49,8 +49,11 @@ public class A3Tester {
 		list1.addFront("A");
 		list1.addFront("J");
 		result = list1.frontToBack();
+		System.out.println(result);
 		displayResults(result.equals("{JAVA}"), "testAddFront");
+		System.out.println(result);
 		result = list1.backToFront();
+		System.out.println(result);
 		displayResults(result.equals("{AVAJ}"), "testAddFront");
 	}
 	
@@ -143,6 +146,8 @@ public class A3Tester {
 		list1.removeAt(4);
 		result1 = list1.frontToBack();
 		result2 = list1.backToFront();
+		System.out.println(result1);
+		System.out.println(result2);
 		displayResults(result1.equals("{ifun}"), "removeAt test3");
 		displayResults(result2.equals("{nufi}"), "removeAt test4");
 		
