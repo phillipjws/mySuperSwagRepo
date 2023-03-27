@@ -4,9 +4,9 @@ public class Influencer {
 	private int followers;
 	
 	public Influencer(String name, String platform, int followers) {
-		this.name = "an influencer";
-		this.platform = "none";
-		this.followers = -1;
+		this.name = name;
+		this.platform = platform;
+		this.followers = followers;
 	}
 	
 	/*

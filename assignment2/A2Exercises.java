@@ -6,7 +6,10 @@ public class A2Exercises {
 	 * Returns: the number of followers of the more popular influencer
 	 */
 	public static int highestFollowers (Influencer person1, Influencer person2) {
-		return -1; // so it compiles
+		if(person1.getFollowers() > person2.getFollowers()){
+			return person1.getFollowers();
+		}
+		return person2.getFollowers();
 	}
 	
 	/*
@@ -22,6 +25,11 @@ public class A2Exercises {
 	 */
 	public static Influencer mostFollowers (Influencer[] array) {
 		Influencer most = array[0];
+		for(int i = 0; i < array.length; i++){
+			if(array[i].getFollowers() > most.getFollowers()){
+				most = array[i];
+			}
+		}
 				
 		return most; // so it compiles
 	}
@@ -36,6 +44,11 @@ public class A2Exercises {
 	 */
 	public static int numberShorterThan(Podcast[] array, int duration) {
 		int count = 0;
+		for(int i = 0;i < array.length; i++){
+			if(array[i].isShorterThan(duration)){
+				count++;
+			}
+		}
 		
 		return count; // so it compiles
 	}
@@ -49,6 +62,11 @@ public class A2Exercises {
 	 */	
 	public static int numberWithInfluencer(Podcast[] array, Influencer toFind) {
 		int count = 0;
+		for( int i =0; i < array.length; i++){
+			if(array[i].hasHost(toFind)){
+				count++;
+			}
+		}
 		
 		return count;  // so it compiles
 	}
@@ -68,6 +86,11 @@ public class A2Exercises {
 	 */
 	public static Podcast highestAverageFollowers(Podcast[] array) {
 		Podcast highest = array[0];
+		for(int i = 0; i < array.length; i++){
+			if(array[i].averageFollowers() > highest.averageFollowers()){
+				highest = array[i];
+			}
+		}
 		
 		return highest; // so it compiles
 	}

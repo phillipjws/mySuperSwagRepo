@@ -63,7 +63,10 @@ public class Podcast {
 	 * Returns: boolean - true if this podcast has has a duration less than the given duration
 	 */
 	public boolean isShorterThan(int duration) {
-		return false; // so it compiles
+		if (getDuration() > duration){
+			return false;
+		}
+		return true; // so it compiles
 	}
 
 	/*
@@ -74,8 +77,11 @@ public class Podcast {
 	 */
 	public double averageFollowers() {
 		double sum = 0.0;
+		for(int i = 0; i < hosts.length; i++){
+			sum += hosts[i].getFollowers();
+		}
 		
-		return sum; // so it compiles
+		return sum / hosts.length; // so it compiles
 	}
 
 	/*
@@ -84,8 +90,13 @@ public class Podcast {
 	 * Returns: boolean - true if this given influencer is one of this podcast's hosts
 	 */
 	public boolean hasHost(Influencer alias) {
-		boolean found = false;
+		hosts = getHosts();
+		for(int i = 0; i < hosts.length; i++){
+			if(hosts[i] == alias){
+				return true;
+			}
+		}
 		
-		return found; // so it compiles
+		return false; // so it compiles
 	}
 }

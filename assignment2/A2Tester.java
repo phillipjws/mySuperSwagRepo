@@ -7,16 +7,16 @@ public class A2Tester {
 		
 		// Part 1
 		testIsNamed();
-		// testIsShorterThan();
-		// testAverageFollowers();
-		// testHasHost();
+		testIsShorterThan();
+		testAverageFollowers();
+		testHasHost();
 	
 		// Part 2
-		// testHighestFollowers();
-		// testMostFollowers();
-		// testNumberShorterThan();
-		// testNumberWithInfluencer();
-		// testHighestAverageFollowers();
+		testHighestFollowers();
+		testMostFollowers();
+		testNumberShorterThan();
+		testNumberWithInfluencer();
+		testHighestAverageFollowers();
 		
 		System.out.println("PASSED " + testPassCount + " / " + testCount + " tests");
 	}
@@ -262,6 +262,10 @@ public class A2Tester {
 		displayResults(result.equals(expected), "most followers in array2");
 
 		// add tests until you are sure your implementation works correctly
+		result = A2Exercises.mostFollowers(array5);
+		expected = in6;
+		// System.out.println("\nExpected: "+expected+". Result returned: "+result);
+		displayResults(result.equals(expected), "most followers in array5");
 	}
 	
 	
