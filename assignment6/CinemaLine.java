@@ -9,7 +9,7 @@
  * the cinema at the same time.
  */
 public class CinemaLine {
-	List<Person> list;
+	A6List<Person> list;
 	//Do not add any other fields
 
 	public CinemaLine() {
@@ -24,6 +24,7 @@ public class CinemaLine {
 	 */
 	public void enterLine(Person p) {
 		// TODO: implement this
+		list.addBack(p);
 	}
 	
 	/*
@@ -38,7 +39,11 @@ public class CinemaLine {
 	 */
 	public Person handleOne() {
 		// TODO: implement this
-		return null; // so it compiles
+		try{
+			return list.removeFront(); // so it compiles
+		}catch(Exception ListEmptyException) {
+			return null;
+		}
 	}
 	
 	/*
@@ -51,7 +56,17 @@ public class CinemaLine {
 	 */
 	public int handleMultiple(int num) {
 		// TODO: implement this
-		return -1; // so it compiles
+		int count = 0;
+		try{
+			for(int i = 0; i < num; i++){
+				list.removeFront();
+				count++;
+			}
+				
+		}catch(Exception listEmptyException){
+			return count;
+		}
+		return count; // so it compiles
 	}
 	
 	/*
@@ -63,7 +78,12 @@ public class CinemaLine {
 	 */
 	public boolean premiumEntry(Person p, int pos) {
 		// TODO: implement this
-		return false; // so it compiles
+		try {
+			list.insertAt(pos, p);
+		} catch (Exception e) {
+			return false;
+		}
+		return true; // so it compiles
 	}
 	
 	/*
@@ -73,7 +93,7 @@ public class CinemaLine {
 	 */
 	public int peopleInLine() {
 		// TODO: implement this
-		return -1; // so it compiles
+		return list.size();
 	}
 }
 	

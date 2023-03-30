@@ -1,4 +1,4 @@
-public class A5Node<T extends Comparable <T>>{
+public class A5Node<T>{
 	    
 	private T data;
 	protected A5Node<T> next;

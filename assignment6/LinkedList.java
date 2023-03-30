@@ -1,10 +1,10 @@
 class ListEmptyException extends Exception {}
 class InvalidPositionException extends Exception {}
 
-public class LinkedList<T> implements List<T> {
+public class LinkedList<T> implements A6List<T> {
 	private int numElements;
-	private A5Node<T> head;
-	private A5Node<T> tail;
+	private A6Node<T> head;
+	private A6Node<T> tail;
 
 	public LinkedList() {
 		head = null;
@@ -13,7 +13,7 @@ public class LinkedList<T> implements List<T> {
 	}
 
 	public void addFront (T val) {
-		A5Node<T> n = new A5Node<T>(val);
+		A6Node<T> n = new A6Node<T>(val);
 		if (head != null) {
 			n.next = head;
 		} else {
@@ -24,7 +24,7 @@ public class LinkedList<T> implements List<T> {
 	}
 
 	public void addBack (T val) { 
-		A5Node<T> n = new A5Node<T>(val);
+		A6Node<T> n = new A6Node<T>(val);
 		if (head == null) {
 			head = n;
 		} else {
@@ -39,18 +39,21 @@ public class LinkedList<T> implements List<T> {
 	}
 	
 	public void insertAt(int position, T val) throws InvalidPositionException {
+		if(position > size() || position < 0){
+			throw new InvalidPositionException();
+		}
 		if (position == 0) {
 			addFront(val);
 		} else if (position == numElements) {
 			addBack(val);
 		} else {
-			A5Node<T> cur = head;
+			A6Node<T> cur = head;
 			for (int i = 0; i < position-1; i++) {
 				cur = cur.next;
 			}
 			// Now cur is pointing the node in the position
 			// one before the place we want to insert.
-			A5Node<T> n = new A5Node<T>(val);
+			A6Node<T> n = new A6Node<T>(val);
 			n.next = cur.next;
 			cur.next = n;
 			numElements++;
@@ -59,7 +62,7 @@ public class LinkedList<T> implements List<T> {
 	
 	public T removeFront() throws ListEmptyException {
 		if (head == null) {
-			return null;
+			throw new ListEmptyException();
 		}
 		T toReturn = head.getData();
 		if (head.next == null) {
@@ -72,14 +75,14 @@ public class LinkedList<T> implements List<T> {
 	
 	public T removeBack() throws ListEmptyException {
 		if (head == null) {
-			return null;
+			throw new ListEmptyException();
 		}
 		T toReturn = tail.getData();
 		if (head.next == null) {
 			head = null;
 			tail = null;
 		} else {
-			A5Node<T> cur = head;
+			A6Node<T> cur = head;
 			while (cur.next != tail) {
 				cur = cur.next;
 			}
@@ -99,7 +102,7 @@ public class LinkedList<T> implements List<T> {
 			return "{}";
 		}
 		String s = "{"+head.getData().toString();
-		A5Node<T> cur = head.next;
+		A6Node<T> cur = head.next;
 		while (cur != null) {
 			s += " " + cur.getData().toString();
 			cur = cur.next;

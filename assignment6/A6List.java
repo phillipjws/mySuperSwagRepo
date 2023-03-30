@@ -1,4 +1,4 @@
-public interface List<T> {
+public interface A6List<T> {
     
 	/*
 	 * Purpose:  add val to the front of the list
