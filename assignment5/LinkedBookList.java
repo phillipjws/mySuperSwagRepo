@@ -127,7 +127,14 @@ public class LinkedBookList {
 	 */
 	public int totalBooks() {
 		// TODO: Call a recursive helper method
-		return -1; // so it compiles
+		return totalBooksRec(head); // so it compiles
+	}
+
+	private int totalBooksRec(BookNode cur){
+		if(cur != null){
+			return 1 + totalBooksRec(cur.next);
+		}
+		return 0;
 	}
 	
 	/*
@@ -137,7 +144,13 @@ public class LinkedBookList {
 	 */
 	public int totalPages() {
 		// TODO: Call a recursive helper method
-		return -1; // so it compiles
+		return totalPagesRec(head); // so it compiles
+	}
+	private int totalPagesRec(BookNode cur){
+		if(cur != null){
+			return cur.getData().getPages() + totalPagesRec(cur.next);
+		}
+		return 0;
 	}
 	
 	/*
@@ -149,7 +162,17 @@ public class LinkedBookList {
 	 */
 	public int countLongerThan(Book sampleBook) {
 		// TODO: Call a recursive helper method
-		return -1; // so it compiles
+		return countLongerThanRec(sampleBook, head); // so it compiles
+	}
+
+	private int countLongerThanRec(Book sampleBook, BookNode cur){
+		if(cur == null){
+			return 0;
+		}
+		if (cur.getData().getPages() > sampleBook.getPages()){
+			return 1 + countLongerThanRec(sampleBook, cur.next);
+		}
+		return countLongerThanRec(sampleBook, cur.next);
 	}
 		
 	/*
@@ -162,7 +185,16 @@ public class LinkedBookList {
 	 */
 	public int pagesBeforeBookByAuthor(String authorName) {
 		// TODO: Call a recursive helper method
-		return -1; // so it compiles
+		return pagesBeforeBookByAuthorRec(authorName, head); // so it compiles
+	}
+	private int pagesBeforeBookByAuthorRec(String authorName, BookNode cur){
+		if(cur == null){
+			return 0;
+		}
+		if(cur.getData().getAuthor().equals(authorName)){
+			return 0;
+		}
+		return cur.getData().getPages() + pagesBeforeBookByAuthorRec(authorName, cur.next);
 	}
 	
 	/*
@@ -198,7 +230,13 @@ public class LinkedBookList {
 	 * the book that is found first in the list is returned
 	 */
 	private Book longestBookRec(BookNode cur, Book longest) {
-		return longest; // so it compiles
+		if(cur.getData().getPages() > longest.getPages()){
+			longest = cur.getData();
+		}
+		if(cur.next == null){
+			return longest;
+		}
+		return longestBookRec(cur.next, longest); // so it compiles
 	}
 	
 	/*
@@ -229,7 +267,17 @@ public class LinkedBookList {
 	 *                 in this list
 	 */
 	private int distanceBetweenBooksByAuthorRec(BookNode cur, String authorName, boolean firstBookFound) {
-		return -1; // so it compiles
+		if(cur.getData().getAuthor().equals(authorName) && firstBookFound == false){
+			firstBookFound = true;
+			return distanceBetweenBooksByAuthorRec(cur.next, authorName, firstBookFound);
+		}
+		if(firstBookFound == false){
+			return distanceBetweenBooksByAuthorRec(cur.next, authorName, firstBookFound);
+		}
+		if(cur.getData().getAuthor().equals(authorName)){
+			return 0;
+		}
+		return 1 + distanceBetweenBooksByAuthorRec(cur.next, authorName, firstBookFound);
 	}
 
 

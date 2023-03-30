@@ -1,7 +1,7 @@
 public class Node<T>{
 	    
-	private T data;
-	protected Node<T> next;
+	public T data;
+	public Node<T> next;
 
 	public Node (T value) {
 		this.data = value;

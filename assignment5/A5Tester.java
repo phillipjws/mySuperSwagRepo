@@ -7,14 +7,14 @@ public class A5Tester {
 		
 		/* Linked List Recursion Exercises: */
 		testTotalBooks();
-		// testTotalPages();
-		// testCountLongerThan();
-		// testPagesBeforeBookByAuthor();
-		// testLongestBook();
-		// testDistanceBetweenBooksByAuthor();
+		testTotalPages();
+		testCountLongerThan();
+		testPagesBeforeBookByAuthor();
+		testLongestBook();
+		testDistanceBetweenBooksByAuthor();
 
 		/* Recursion Exercises using the List ADT */
-		// testCountMatches();
+		testCountMatches();
 		// testChangeXToY();
 		// testAllEqual();
 		// testRangeOfValues();

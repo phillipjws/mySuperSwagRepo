@@ -8,9 +8,18 @@ public class A5Exercises {
 	 */
 	public static<T> int countMatches(List<T> theList, T toFind) {
 		// TODO: Call a recursive helper method
-		return -1; // so it compiles
+		return countMatchesRec(toFind, theList.head); // so it compiles
 	}
 	
+	private static<T> int countMatchesRec(T toFind, Node cur){
+		if( cur == null){
+			return 0;
+		}
+		if(cur.getData().equals(toFind)){
+			return 1 + countMatchesRec(toFind, cur.next);
+		}
+		return countMatchesRec(toFind, cur.next);
+	}
 	/*
 	 * Purpose: change all occurrences of x to y in the given list
 	 * Parameters: List<T> theList - the list to search through
