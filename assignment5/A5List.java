@@ -1,4 +1,4 @@
-public interface List<T> {
+public interface A5List<T>{
 
 	/* 
 	 * Purpose: add data to the back of the list

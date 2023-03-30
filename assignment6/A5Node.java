@@ -1,9 +1,9 @@
-public class Node<T>{
+public class A5Node<T>{
 	    
 	private T data;
-	protected Node<T> next;
+	protected A5Node<T> next;
 
-	public Node (T value) {
+	public A5Node (T value) {
 		this.data = value;
 		this.next = null;
 	}
@@ -17,12 +17,16 @@ public class Node<T>{
 		return data;
 	}
 
+	public void setData(T newValue){
+		this.data = newValue;
+	}
+
 	/*
 	 * Purpose: get the next node
 	 * Parameters: nothing
 	 * Returns: Node<T> - the next node
 	 */
-	public Node<T> getNext() {
+	public A5Node<T> getNext() {
 		return next;
 	}
 
@@ -31,7 +35,7 @@ public class Node<T>{
 	 * Parameters: Node<T> next - the new next
 	 * Returns: void - nothing
 	 */
-	public void setNext(Node<T> next) {
+	public void setNext(A5Node<T> next) {
 		this.next = next;
 	}
 

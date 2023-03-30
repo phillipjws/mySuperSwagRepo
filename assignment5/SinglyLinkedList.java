@@ -1,7 +1,7 @@
-public class SinglyLinkedList<T> implements List<T> {
+public class SinglyLinkedList<T> implements A5List<T>{
 
-	private Node<T> head;
-	private Node<T> tail;
+	private A5Node<T> head;
+	private A5Node<T> tail;
 	private int size;
 
 	public SinglyLinkedList() {
@@ -11,7 +11,7 @@ public class SinglyLinkedList<T> implements List<T> {
 	}
 
 	public void add (T data){
-		Node<T> n = new Node<T>(data);
+		A5Node<T> n = new A5Node<T>(data);
 		if(head == null) {
 			head = n;
 		} else {
@@ -33,7 +33,7 @@ public class SinglyLinkedList<T> implements List<T> {
 		return getRec(head, 0, position);
 	}
 	
-	public T getRec(Node<T> cur, int i, int position) {
+	public T getRec(A5Node<T> cur, int i, int position) {
 		if (i == position) {
 			return cur.getData();
 		} else {
@@ -45,7 +45,7 @@ public class SinglyLinkedList<T> implements List<T> {
 		changeRec(head, 0, position, newValue);
 	}
 	
-	public void changeRec(Node<T> cur, int i, int position, T newValue) {
+	public void changeRec(A5Node<T> cur, int i, int position, T newValue) {
 		if (i == position) {
 			cur.setData(newValue);
 		} else {
@@ -77,7 +77,7 @@ public class SinglyLinkedList<T> implements List<T> {
 			head = null;
 			tail = null;
 		} else {
-			Node<T> cur = getTailPrev(head);
+			A5Node<T> cur = getTailPrev(head);
 			cur.next = null; 
 			tail = cur;
 		}
@@ -85,7 +85,7 @@ public class SinglyLinkedList<T> implements List<T> {
 		return toReturn;		
 	}
 	
-	public Node<T> getTailPrev(Node<T> cur) {
+	public A5Node<T> getTailPrev(A5Node<T> cur) {
 		if (cur.next == null) {
 			return cur;
 		} else {
@@ -105,7 +105,7 @@ public class SinglyLinkedList<T> implements List<T> {
 		}
 	}
 	
-	public String toStringRec(Node<T> cur) {
+	public String toStringRec(A5Node<T> cur) {
 		if (cur == null) {
 			return "";
 		} else if (cur.next == null) {

@@ -1,49 +1,70 @@
-public class A5Exercises {
+public class A5Exercises{
 
 	/*
 	 * Purpose: get the number of occurrences of toFind in theList
-	 * Parameters: List<T> theList - the list to search through
+	 * Parameters: A5List<T> theList - the list to search through
 	 *             T toFind - the target search value
 	 * Returns: int - the number of occurrences of toFind found
 	 */
-	public static<T> int countMatches(List<T> theList, T toFind) {
+	public static<T> int countMatches(A5List<T> theList, T toFind) {
 		// TODO: Call a recursive helper method
-		return countMatchesRec(toFind, theList.head); // so it compiles
+		return countMatchesRec(toFind, theList, 0); // so it compiles
 	}
 	
-	private static<T> int countMatchesRec(T toFind, Node cur){
-		if( cur == null){
+	private static<T> int countMatchesRec(T toFind, A5List<T> theList, int index){
+		if(index >= theList.size()){
 			return 0;
 		}
-		if(cur.getData().equals(toFind)){
-			return 1 + countMatchesRec(toFind, cur.next);
+		if(theList.get(index).equals(toFind)){
+			return 1 + countMatchesRec(toFind, theList, index+1);
 		}
-		return countMatchesRec(toFind, cur.next);
+		return countMatchesRec(toFind, theList, index+1);
 	}
 	/*
 	 * Purpose: change all occurrences of x to y in the given list
-	 * Parameters: List<T> theList - the list to search through
+	 * Parameters: A5List<T> theList - the list to search through
 	 *			   T x - the value to change
 	 *			   T y = the value to change all x's to
 	 * Returns: void - nothing
 	 */
-	public static<T> void changeXToY(List<T> theList, T x, T y) {
+	public static<T> void changeXToY(A5List<T> theList, T x, T y) {
 		// TODO: Call a recursive helper method
+		changeXToYRec(theList, x, y, 0);
+	}
+
+	private static<T> void changeXToYRec(A5List<T> theList, T x, T y, int index){
+		if(index >= theList.size()){
+			return;
+		}
+		if(theList.get(index).equals(x)){
+			theList.change(index, y);
+		}
+		changeXToYRec(theList, x, y, index+1);
 	}
 		
 	/* 
 	 * Purpose: determines if all values in the list are equivalent
-	 * Parameters: List<T> theList - the list
+	 * Parameters: A5List<T> theList - the list
 	 * Returns: boolean - true unless any values in the list are 
 	 *                    different from one another
 	 */
-	public static<T> boolean allEqual(List<T> theList) {
+	public static<T> boolean allEqual(A5List<T> theList) {
 		if (theList.isEmpty()) {
 			return true;
 		} else {
 			// TODO: Call a recursive helper method
-			return false; // so it compiles
+			return allEqualRec(theList, 1, theList.get(0)); // so it compiles
 		}
+	}
+
+	private static<T> boolean allEqualRec(A5List<T> theList, int index, T firstVal){
+		if(index >= theList.size()){
+			return true;
+		}
+		if(theList.get(index).equals(firstVal)){
+			return allEqualRec(theList, index+1, firstVal);
+		}
+		return false;
 	}
 	
 	
@@ -52,7 +73,7 @@ public class A5Exercises {
 	 * Parameters: List<Integer> theList - the list of Integers
 	 * Returns: int - the range of values
 	 */
-	public static int rangeOfValues(List<Integer> theList) {
+	public static int rangeOfValues(A5List<Integer> theList) {
 		if (theList.size() == 0) {
 			return 0;
 		} else {
@@ -72,7 +93,16 @@ public class A5Exercises {
 	 *             Integer max - the largest value found so far
 	 * Returns: int - the range of values
 	 */
-	public static int rangeOfValuesRec(List<Integer> theList, int i, Integer min, Integer max) {
-		return -1; // so it compiles
+	public static int rangeOfValuesRec(A5List<Integer> theList, int i, Integer min, Integer max) {
+		if(i >= theList.size()){
+			return max - min + 1;
+		}
+		int currentValue = theList.get(i);
+		if (currentValue < min) {
+			min = currentValue;
+		} else if (currentValue > max) {
+			max = currentValue;
+		}
+		return rangeOfValuesRec(theList, i+1, min, max);
 	}
 }

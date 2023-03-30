@@ -15,9 +15,9 @@ public class A5Tester {
 
 		/* Recursion Exercises using the List ADT */
 		testCountMatches();
-		// testChangeXToY();
-		// testAllEqual();
-		// testRangeOfValues();
+		testChangeXToY();
+		testAllEqual();
+		testRangeOfValues();
 		
 		System.out.println("Passed " + testPassCount + " / " + testCount + " tests");
 	}
@@ -565,14 +565,20 @@ public class A5Tester {
 		
 		result = A5Exercises.rangeOfValues(list0);
 		expected = 0;
+		System.out.println(result);
+		System.out.println(expected);
 		displayResults(result==expected, "rangeOfValues in empty list");
 		
 		result = A5Exercises.rangeOfValues(list1);
 		expected = 1;
+		System.out.println(result);
+		System.out.println(expected);
 		displayResults(result==expected, "rangeOfValues in list with 1 element");
 		
 		result = A5Exercises.rangeOfValues(list2);
 		expected = 8;
+		System.out.println(result);
+		System.out.println(expected);
 		displayResults(result==expected, "rangeOfValues in {7,1,3,5,0,4}");
 		
 		// Write more tests here

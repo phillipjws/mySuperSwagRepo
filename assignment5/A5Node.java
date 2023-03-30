@@ -1,9 +1,9 @@
-public class Node<T>{
+public class A5Node<T extends Comparable <T>>{
 	    
-	public T data;
-	public Node<T> next;
+	private T data;
+	protected A5Node<T> next;
 
-	public Node (T value) {
+	public A5Node (T value) {
 		this.data = value;
 		this.next = null;
 	}
@@ -29,18 +29,18 @@ public class Node<T>{
 	/*
 	 * Purpose: get the next node
 	 * Parameters: nothing
-	 * Returns: Node<T> - the next node
+	 * Returns: A5Node<T> - the next node
 	 */
-	public Node<T> getNext() {
+	public A5Node<T> getNext() {
 		return next;
 	}
 
 	/*
 	 * Purpose: update the next reference for this node
-	 * Parameters: Node<T> next - the new next
+	 * Parameters: A5Node<T> next - the new next
 	 * Returns: void - nothing
 	 */
-	public void setNext(Node<T> next) {
+	public void setNext(A5Node<T> next) {
 		this.next = next;
 	}
 

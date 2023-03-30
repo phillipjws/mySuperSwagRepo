@@ -3,8 +3,8 @@ class InvalidPositionException extends Exception {}
 
 public class LinkedList<T> implements List<T> {
 	private int numElements;
-	private Node<T> head;
-	private Node<T> tail;
+	private A5Node<T> head;
+	private A5Node<T> tail;
 
 	public LinkedList() {
 		head = null;
@@ -13,7 +13,7 @@ public class LinkedList<T> implements List<T> {
 	}
 
 	public void addFront (T val) {
-		Node<T> n = new Node<T>(val);
+		A5Node<T> n = new A5Node<T>(val);
 		if (head != null) {
 			n.next = head;
 		} else {
@@ -24,7 +24,7 @@ public class LinkedList<T> implements List<T> {
 	}
 
 	public void addBack (T val) { 
-		Node<T> n = new Node<T>(val);
+		A5Node<T> n = new A5Node<T>(val);
 		if (head == null) {
 			head = n;
 		} else {
@@ -44,13 +44,13 @@ public class LinkedList<T> implements List<T> {
 		} else if (position == numElements) {
 			addBack(val);
 		} else {
-			Node<T> cur = head;
+			A5Node<T> cur = head;
 			for (int i = 0; i < position-1; i++) {
 				cur = cur.next;
 			}
 			// Now cur is pointing the node in the position
 			// one before the place we want to insert.
-			Node<T> n = new Node<T>(val);
+			A5Node<T> n = new A5Node<T>(val);
 			n.next = cur.next;
 			cur.next = n;
 			numElements++;
@@ -79,7 +79,7 @@ public class LinkedList<T> implements List<T> {
 			head = null;
 			tail = null;
 		} else {
-			Node<T> cur = head;
+			A5Node<T> cur = head;
 			while (cur.next != tail) {
 				cur = cur.next;
 			}
@@ -99,7 +99,7 @@ public class LinkedList<T> implements List<T> {
 			return "{}";
 		}
 		String s = "{"+head.getData().toString();
-		Node<T> cur = head.next;
+		A5Node<T> cur = head.next;
 		while (cur != null) {
 			s += " " + cur.getData().toString();
 			cur = cur.next;
