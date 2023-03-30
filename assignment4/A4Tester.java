@@ -6,16 +6,16 @@ public class A4Tester {
 		testCount = 0;
 		testPassCount = 0;
 		
-		/* Part 1: Using the List ADT */		
-		testBuildingsCount();
+		/* Part 1: Using the A4List ADT */		
+		// testBuildingsCount();
 		// testInhabitantsCount();
 		// testDistanceAway();
 		// testDistanceToTallest();
 		// testNumberVisible();
 		
 		/* Part 2: Implementing the Generic Stack ADT */
-		// testStackOperations();
-		// testStackIsGeneric();
+		testStackOperations();
+		testStackIsGeneric();
 		
 		System.out.println("Passed " + testPassCount + " / " + testCount + " tests");
 	}
@@ -36,24 +36,24 @@ public class A4Tester {
 		Building[] arr2 = {b1, b4, b3, b2};
 		Building[] arr3 = {b1, b2, b3, b4, b5, b6, b7, b8};
 		
-		List list1 = new ArrayList(arr1);
-		List list2 = new ArrayList(arr2);
-		List list3 = new ArrayList(arr3);
+		A4List A4List1 = new ArrayList(arr1);
+		A4List A4List2 = new ArrayList(arr2);
+		A4List A4List3 = new ArrayList(arr3);
 		
 		int result = 0;
 		int expected = 0;
 		
-		result = A4Exercises.buildingsCount(list1);
+		result = A4Exercises.buildingsCount(A4List1);
 		expected = 1;
-		displayResults(result == expected, "buildingsCount(list1)");
+		displayResults(result == expected, "buildingsCount(A4List1)");
 		
-		result = A4Exercises.buildingsCount(list2);
+		result = A4Exercises.buildingsCount(A4List2);
 		expected = 4;
-		displayResults(result == expected, "buildingsCount(list2)");
+		displayResults(result == expected, "buildingsCount(A4List2)");
 		
-		result = A4Exercises.buildingsCount(list3);
+		result = A4Exercises.buildingsCount(A4List3);
 		expected = 8;
-		displayResults(result == expected, "buildingsCount(list3)");
+		displayResults(result == expected, "buildingsCount(A4List3)");
 		
 		// Add tests until you are sure your implementation 
 		// produces the correct result for all inputs
@@ -76,24 +76,24 @@ public class A4Tester {
 		Building[] arr2 = {b1, b4, b3, b2};
 		Building[] arr3 = {b1, b2, b3, b4, b5, b6, b7, b8};
 		
-		List list1 = new ArrayList(arr1);
-		List list2 = new ArrayList(arr2);
-		List list3 = new ArrayList(arr3);
+		A4List A4List1 = new ArrayList(arr1);
+		A4List A4List2 = new ArrayList(arr2);
+		A4List A4List3 = new ArrayList(arr3);
 		
 		int result = 0;
 		int expected = 0;
 		
-		result = A4Exercises.inhabitantsCount(list1);
+		result = A4Exercises.inhabitantsCount(A4List1);
 		expected = 10;
-		displayResults(result == expected, "inhabitantsCount(list1)");
+		displayResults(result == expected, "inhabitantsCount(A4List1)");
 		
-		result = A4Exercises.inhabitantsCount(list2);
+		result = A4Exercises.inhabitantsCount(A4List2);
 		expected = 10+48+20+120;
-		displayResults(result == expected, "inhabitantsCount(list2)");
+		displayResults(result == expected, "inhabitantsCount(A4List2)");
 		
-		result = A4Exercises.inhabitantsCount(list3);
+		result = A4Exercises.inhabitantsCount(A4List3);
 		expected = 10+48+20+120+60+250+72+80;
-		displayResults(result == expected, "inhabitantsCount(list3)");
+		displayResults(result == expected, "inhabitantsCount(A4List3)");
 		
 		// Add tests until you are sure your implementation 
 		// produces the correct result for all inputs
@@ -116,24 +116,24 @@ public class A4Tester {
 		Building[] arr2 = {b1, b4, b3, b2};
 		Building[] arr3 = {b1, b2, b3, b4, b5, b6, b7, b8};
 		
-		List list1 = new ArrayList(arr1);
-		List list2 = new ArrayList(arr2);
-		List list3 = new ArrayList(arr3);
+		A4List A4List1 = new ArrayList(arr1);
+		A4List A4List2 = new ArrayList(arr2);
+		A4List A4List3 = new ArrayList(arr3);
 		
 		int result = 0;
 		int expected = 0;
 		
-		result = A4Exercises.distanceAway(list1, b1);
+		result = A4Exercises.distanceAway(A4List1, b1);
 		expected = 0;
-		displayResults(result==expected, "distanceAway(list1, b1)");
+		displayResults(result==expected, "distanceAway(A4List1, b1)");
 		
-		result = A4Exercises.distanceAway(list2, b2);
+		result = A4Exercises.distanceAway(A4List2, b2);
 		expected = 3;
-		displayResults(result==expected, "distanceAway(list2, b2)");
+		displayResults(result==expected, "distanceAway(A4List2, b2)");
 		
-		result = A4Exercises.distanceAway(list3, b3);
+		result = A4Exercises.distanceAway(A4List3, b3);
 		expected = 2;
-		displayResults(result==expected, "distanceAway(list3, b3)");
+		displayResults(result==expected, "distanceAway(A4List3, b3)");
 
 		// Add tests until you are sure your implementation 
 		// produces the correct result for all inputs		
@@ -157,29 +157,29 @@ public class A4Tester {
 		Building[] arr3 = {b4, b2, b2, b4};
 		Building[] arr4 = {b1, b2, b3, b4, b5, b6, b7, b8};
 		
-		List list1 = new ArrayList(arr1);
-		List list2 = new ArrayList(arr2);
-		List list3 = new ArrayList(arr3);
-		List list4 = new ArrayList(arr4);
+		A4List A4List1 = new ArrayList(arr1);
+		A4List A4List2 = new ArrayList(arr2);
+		A4List A4List3 = new ArrayList(arr3);
+		A4List A4List4 = new ArrayList(arr4);
 		
 		int result = 0;
 		int expected = 0;		
 		
-		result = A4Exercises.distanceToTallest(list1);
+		result = A4Exercises.distanceToTallest(A4List1);
 		expected = 0;
-		displayResults(result==expected, "distanceToTallest(list1)");
+		displayResults(result==expected, "distanceToTallest(A4List1)");
 		
-		result = A4Exercises.distanceToTallest(list2);
+		result = A4Exercises.distanceToTallest(A4List2);
 		expected = 1;
-		displayResults(result==expected, "distanceToTallest(list2)");
+		displayResults(result==expected, "distanceToTallest(A4List2)");
 
-		result = A4Exercises.distanceToTallest(list3);
+		result = A4Exercises.distanceToTallest(A4List3);
 		expected = 0;
-		displayResults(result==expected, "distanceToTallest(list3)");
+		displayResults(result==expected, "distanceToTallest(A4List3)");
 		
-		result = A4Exercises.distanceToTallest(list4);
+		result = A4Exercises.distanceToTallest(A4List4);
 		expected = 5;
-		displayResults(result==expected, "distanceToTallest(list4)");
+		displayResults(result==expected, "distanceToTallest(A4List4)");
 		
 		// Write more of your own tests here
 		
@@ -202,29 +202,29 @@ public class A4Tester {
 		Building[] arr3 = {b4, b2, b2, b4};
 		Building[] arr4 = {b1, b2, b3, b4, b5, b6, b7, b8};
 		
-		List list1 = new ArrayList(arr1);
-		List list2 = new ArrayList(arr2);
-		List list3 = new ArrayList(arr3);
-		List list4 = new ArrayList(arr4);
+		A4List A4List1 = new ArrayList(arr1);
+		A4List A4List2 = new ArrayList(arr2);
+		A4List A4List3 = new ArrayList(arr3);
+		A4List A4List4 = new ArrayList(arr4);
 		
 		int result = 0;
 		int expected = 0;		
 		
-		result = A4Exercises.numberVisible(list1);
+		result = A4Exercises.numberVisible(A4List1);
 		expected = 1;
-		displayResults(result==expected, "numberVisible(list1)");
+		displayResults(result==expected, "numberVisible(A4List1)");
 		
-		result = A4Exercises.numberVisible(list2);
+		result = A4Exercises.numberVisible(A4List2);
 		expected = 2;
-		displayResults(result==expected, "numberVisible(list2)");
+		displayResults(result==expected, "numberVisible(A4List2)");
 
-		result = A4Exercises.numberVisible(list3);
+		result = A4Exercises.numberVisible(A4List3);
 		expected = 1;
-		displayResults(result==expected, "numberVisible(list3)");
+		displayResults(result==expected, "numberVisible(A4List3)");
 		
-		result = A4Exercises.numberVisible(list4);
+		result = A4Exercises.numberVisible(A4List4);
 		expected = 4;
-		displayResults(result==expected, "numberVisible(list4)");
+		displayResults(result==expected, "numberVisible(A4List4)");
 		
 		// Write more of your own tests here
 		
@@ -238,11 +238,15 @@ public class A4Tester {
 		
 		displayResults(testStack.isEmpty(), "stack initially empty");
 				
+		testStack.push(3);
 		testStack.push(2);
 		result = testStack.peek();
 		displayResults(!testStack.isEmpty(), "stack no longer empty");
 		displayResults(result.equals(2), "peek works after initial push");
-		
+		result = testStack.pop();
+		displayResults(result.equals(2), "pop works after initial push");
+		result = testStack.peek();
+		displayResults(result.equals(3), "peek works after pop");
 		// Write more of your own tests here
 
 	}

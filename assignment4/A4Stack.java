@@ -7,29 +7,43 @@ public class A4Stack<T> implements Stack<T> {
 
 	public A4Stack() {
 		// TODO: implement this
+		this.head = null;
 	}
 	
 	public void push(T value) {
 		// TODO: implement this
+		A4Node<T> newNode = new A4Node<T>(value);
+		newNode.setNext(head);
+		head = newNode;
 	}
 	
 	public T pop() {
 		// TODO: implement this
-		return null; // so it compiles
+		if(isEmpty()){
+			return null;
+		}
+		T value = head.getData();
+		head = head.next;
+		return value;
 	}
 	
 	public void popAll() {
 		// TODO: implement this
+		head = null;
 	}
 	
 	public boolean isEmpty() {
 		// TODO: implement this
-		return false; // so it compiles
+		return head == null; // so it compiles
 	}
 	
 	public T peek() {
 		// TODO: implement this
-		return null; // so it compiles
+		if(head == null){
+			return null;
+		}else{
+			return head.getData();
+		}
 	}
 	
 	// Implemented for you for debugging purposes

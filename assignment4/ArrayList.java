@@ -1,4 +1,4 @@
-public class ArrayList implements List {
+public class ArrayList implements A4List {
 
 	private Building[] storage;
 	private int numElements;
