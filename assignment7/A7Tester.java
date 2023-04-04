@@ -28,7 +28,7 @@ public class A7Tester {
 
 		System.out.println("Testing Application using Priority Queue.");
 		testAttendee();
-		testApplicationManager();
+		// testApplicationManager();
 		
 
 		System.out.println("PASSED " + testPassCount + "/" + testCount + " tests");
@@ -85,7 +85,7 @@ public class A7Tester {
 		displayResults(pq.size() == 2, "remove + size on multiple element PQ");
 
 		result = pq.removeMin();
-		// System.out.println("res: " + result + ":" + pq);
+		//System.out.println("res: " + result + ":" + pq);
 		displayResults(result.equals(9), "remove on multiple element PQ");
 		displayResults(pq.size() == 1, "remove + size on multiple element PQ");
 

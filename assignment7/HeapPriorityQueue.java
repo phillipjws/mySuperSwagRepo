@@ -21,7 +21,7 @@ public class HeapPriorityQueue<T extends Comparable<T>> implements PriorityQueue
 	
 	// Feel free to change rootIndex to 0 if you want to 
 	// use 0-based indexing (either option is fine)
-	private static final int rootIndex = 1;
+	private static final int rootIndex = 0;
 
 	/*
 	 * Constructor that initializes the array to hold DEFAULT_SIZE elements
@@ -55,6 +55,24 @@ public class HeapPriorityQueue<T extends Comparable<T>> implements PriorityQueue
 		currentSize = 0;
 	}
 
+	private int parent(int pos) {
+		return (pos - 1) / 2;
+	}
+	private int leftChild(int pos) { 
+		return (2 * pos) + 1; 
+	}
+	
+	private int rightChild(int pos){
+		return (2 * pos) + 2;
+	}
+
+	private void swap(int pos1, int pos2){
+		T temp = storage[pos1];
+		storage[pos1] = storage[pos2];
+		storage[pos2] = temp;
+
+	}
+
 	public void insert (T element) throws HeapFullException {
 		// TODO: implement this
 		
@@ -62,39 +80,72 @@ public class HeapPriorityQueue<T extends Comparable<T>> implements PriorityQueue
 		// a 0-based on 1-based implementation. (By default, the root
 		// index is set to 1 for you above. Whatever you choose,
 		// make sure your implementation for the rest of the program
-		// is consistent with this choice.		
+		// is consistent with this choice.	
+		if (isFull()) {
+			throw new HeapFullException();
+		}
+		storage[currentSize] = element;
+		int current = currentSize;
+		currentSize++;
+		if (currentSize > 1) {
+			bubbleUp(current);
+		}
     }
 	
 	private void bubbleUp(int index) {
-		// TODO: implement this
+		while(index > 0 && storage[index].compareTo(storage[parent(index)]) < 0){
+			swap(index, parent(index));
+			index = parent(index);
+		}
 	}
 			
 	public T removeMin() throws HeapEmptyException {
 		// TODO: implement this
+		if(isEmpty()){
+			throw new HeapEmptyException();
+		}else{
+			T min = storage[0];
+			storage[0] = storage[currentSize - 1];
+			currentSize--;
+			bubbleDown(rootIndex);
+			return min;
+		}
 		
-		return null; // so it compiles
 	}
 	
 	private void bubbleDown(int index) {
 		// TODO: implement this
+		if (leftChild(index) >= currentSize) {
+			return;
+		}
+		int smallerChildIndex;
+		if (rightChild(index) >= currentSize || storage[leftChild(index)].compareTo(storage[rightChild(index)]) <= 0) {
+			smallerChildIndex = leftChild(index);
+		} else {
+			smallerChildIndex = rightChild(index);
+		}
+		if (storage[index].compareTo(storage[smallerChildIndex]) > 0) {
+			swap(index, smallerChildIndex);
+			bubbleDown(smallerChildIndex);
+		}
 	}
 
 	public boolean isEmpty(){
 		// TODO: implement this
 		
-		return false; // so it compiles
+		return currentSize == 0; // so it compiles
 	}
 	
 	public boolean isFull() {
 		// TODO: implement this
 		
-		return false; // so it compiles
+		return currentSize == storage.length; // so it compiles
 	}
 	
 	public int size () {
 		// TODO: implement this
 		
-		return -1; // so it compiles
+		return currentSize; // so it compiles
 	}
 
 	public String toString() {

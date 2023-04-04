@@ -28,6 +28,7 @@ public class ApplicationManager {
 	 */
 	public void addApplication(JobApplication a) {
 		// TODO: implement this
+		applications.insert(a);
 	}
 
 
@@ -37,7 +38,7 @@ public class ApplicationManager {
 	 */
 	public int numApplicantsWaiting() {
 		// TODO: implement this
-		return -1; // so it compiles
+		return applications.size(); // so it compiles
 	}
 
 
@@ -48,7 +49,7 @@ public class ApplicationManager {
 	 */
 	public JobApplication nextApplication() {
 		// TODO: implement this
-		return null; // so it compiles
+		return applications.removeMin(); // so it compiles
 	}
 }
 

@@ -56,7 +56,10 @@ public class JobApplication implements Comparable<JobApplication> {
 	 */
 	public int compareTo(JobApplication other) {
 		// TODO: implement this
-		return -1; // so it compiles
+		if(getPriority() == other.getPriority()){
+			return getAvailableStartDate().compareTo(other.getAvailableStartDate());
+		}
+		return getPriority() - other.getPriority(); // so it compiles
 	}
 
 	/* 
@@ -72,6 +75,9 @@ public class JobApplication implements Comparable<JobApplication> {
 	 */
 	public boolean equals(JobApplication other) {
 		//TODO: implement this
+		if(getPriority() == other.getPriority() && getName() == other.getName()){
+			return true;
+		}
 		return false; // so it compiles
 	}
 }
