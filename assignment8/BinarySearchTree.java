@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.LinkedList;
 
 /*
  * An implementation of a binary search tree. This tree stores 
@@ -33,6 +34,22 @@ class BinarySearchTree <K extends Comparable<K>, V>  {
 	 */
 	public void insert (K key, V value) {
 		// TODO: implement this
+		root = insertRec(root, key, value);
+		count++;
+	}
+
+	private BSTNode<K,V> insertRec(BSTNode<K,V> cur,K key,V value){
+		if(cur == null){
+			return new BSTNode<K,V>(key, value);
+		}else if(key.compareTo(cur.key) == 0){
+			cur.value = value;
+			count--;
+		}else if(key.compareTo(cur.key) < 0){
+			cur.left = insertRec(cur.left, key, value);
+		}else if(key.compareTo(cur.key) > 0){
+			cur.right = insertRec(cur.right, key, value);
+		}
+		return cur;
 	}
 
 	/* 	
@@ -44,7 +61,18 @@ class BinarySearchTree <K extends Comparable<K>, V>  {
 	 */
 	public V find (K key) throws KeyNotFoundException {
 		// TODO: implement this
-		throw new KeyNotFoundException();
+		return findRec(root, key);
+	}
+
+	private V findRec(BSTNode<K,V> cur, K key)throws KeyNotFoundException{
+		if(cur == null){
+			throw new KeyNotFoundException();
+		}else if(key.compareTo(cur.key) < 0){
+			return findRec(cur.left, key);
+		}else if(key.compareTo(cur.key) > 0){
+			return findRec(cur.right, key);
+		}
+		return cur.value;
 	}
 
 	/* 	
@@ -54,7 +82,7 @@ class BinarySearchTree <K extends Comparable<K>, V>  {
 	 */
 	public int size() {
 		// TODO: implement this
-		return -1; // so it compiles
+		return count; // so it compiles
 	}
 
 	/*
@@ -64,6 +92,7 @@ class BinarySearchTree <K extends Comparable<K>, V>  {
 	 */
 	public void clear() {
 		// TODO: implement this
+		root = null;
 	}
 
 	/* 
@@ -80,7 +109,14 @@ class BinarySearchTree <K extends Comparable<K>, V>  {
 	 */
 	public int height() {
 		// TODO: implement this
-		return -1; // so it compiles
+		return heightRec(root); // so it compiles
+	}
+
+	private int heightRec(BSTNode<K,V> cur){
+		if(cur == null){
+			return -1;
+		}
+		return 1 + Math.max(heightRec(cur.left), heightRec(cur.right));
 	}
 
 	/* 
@@ -124,6 +160,17 @@ class BinarySearchTree <K extends Comparable<K>, V>  {
 		LinkedList<BSTNode<K,V>> q = new LinkedList<BSTNode<K,V> >();
 		
 		// TODO: implement this
+		q.addLast(root);
+		while(!q.isEmpty()){
+			BSTNode<K,V> temp = q.removeFirst();
+			l.add(new Entry<K,V>(temp.key, temp.value));
+			if(temp.left!= null){
+				q.addLast(temp.left);
+			}
+			if(temp.right != null){
+				q.addLast(temp.right);
+			}
+		}
 		return l;
 	}
 
@@ -140,7 +187,7 @@ class BinarySearchTree <K extends Comparable<K>, V>  {
 	 *	 BST_INORDER	perform an in-order traversal
 	 */
 	public List<Entry<K,V> > entryList (int which) {
-		List<Entry<K,V> > entries = new LinkedList<Entry<K,V> >();
+		List<Entry<K,V>> entries = new LinkedList<Entry<K,V>>();
 
 		if (which == BST_PREORDER) {
 			preOrderRec(root, entries);
@@ -157,15 +204,30 @@ class BinarySearchTree <K extends Comparable<K>, V>  {
 	private void inOrderRec (BSTNode<K,V> n, List <Entry<K,V>> entries) {
 		// TODO: implement this so it adds all of the elements in
 		// the tree to the entries list with an in-order traversal
+		if( n != null){
+			inOrderRec(n.left, entries);
+			entries.add(new Entry<K,V>(n.key, n.value));
+			inOrderRec(n.right, entries);
+		}
 	}
 
 	private void preOrderRec (BSTNode<K,V> n, List <Entry<K,V>> entries) {
 		// TODO: implement this so it adds all of the elements in
 		// the tree to the entries list with a pre-order traversal
+		if( n != null){
+			entries.add(new Entry<K,V>(n.key, n.value));
+			preOrderRec(n.left, entries);
+			preOrderRec(n.right, entries);
+		}
 	}
 
 	private void postOrderRec (BSTNode<K,V> n, List <Entry<K,V>> entries) {
 		// TODO: implement this so it adds all of the elements in
 		// the tree to the entries list with a post-order traversal
+		if( n != null){
+			postOrderRec(n.left, entries);
+			postOrderRec(n.right, entries);
+			entries.add(new Entry<K,V>(n.key, n.value));
+		}
 	}
 }
