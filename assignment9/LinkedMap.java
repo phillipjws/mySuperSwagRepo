@@ -62,7 +62,7 @@ public class LinkedMap<K extends Comparable<K>, V> implements Map<K,V> {
 	}
 
 	public List<Entry<K,V>>	entryList() {
-		List <Entry<K,V> > l = new LinkedList<Entry<K,V> >();
+		List<Entry<K,V>> l = new LinkedList<Entry<K,V>>();
 		Node<K,V> p = head;
 		while (p!= null) {
 			l.add(new Entry<K,V>(p.key, p.value));

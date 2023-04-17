@@ -51,46 +51,56 @@ public class HashMap<K extends Comparable<K>, V> implements Map<K,V> {
 		// gets the index in the table this key should be in
 		int index = Math.abs(key.hashCode()) % tableSize;
 
-		// TODO: complete the rest of this method
-
-
-		return false; // so it compiles
+		// iterate through the list at the given index and check if the key exists
+		for (Entry<K, V> entry : table.get(index)) {
+			if (entry.getKey().equals(key)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public V get (K key) throws KeyNotFoundException {
 		// gets the index in the table this key should be in
 		int index = Math.abs(key.hashCode()) % tableSize;
 
-		// TODO: complete the rest of this method
-
-
-
+		// iterate through the list at the given index and return the value if the key exists
+		for (Entry<K, V> entry : table.get(index)) {
+			if (entry.getKey().equals(key)) {
+				return entry.getValue();
+			}
+		}
 		throw new KeyNotFoundException();
 	}
 
 
-	public List<Entry<K,V> >	entryList() {
-		List <Entry<K,V>> resultList = new LinkedList<Entry<K,V>>();
-		// TODO: complete the rest of this method
-
-		// Tip: you will need to iterate through each index in the table (and each index holds a list)
-		//      you will THEN need to iterate through each element in the linked list chain at a 
-		//      specific index and add each element to l
-
+	public void put(K key, V value) {
+		int index = Math.abs(key.hashCode()) % tableSize;
+		List<Entry<K, V>> bucket = table.get(index);
+	
+		for (Entry<K, V> entry : bucket) {
+			if (entry.key.equals(key)) {
+				entry.value = value;
+				return;
+			}
+		}
+	
+		bucket.add(new Entry<K, V>(key, value));
+		count++;
+	}
+	
+	public List<Entry<K, V>> entryList() {
+		List<Entry<K, V>> resultList = new LinkedList<Entry<K, V>>();
+	
+		for (List<Entry<K, V>> bucket : table) {
+			for (Entry<K, V> entry : bucket) {
+				resultList.add(entry);
+			}
+		}
+	
 		return resultList;
 	}
 	
-	public void put (K key, V value){
-		// gets the index in the table this key should be in
-		int index = Math.abs(key.hashCode())%tableSize;
-
-		// TODO: complete the rest of this method
-
-		// if key is found, update value.  if key is not found add a new Entry with key,value
-		// The tester expects that you will add the newest Entry to the END of the list
-
-
-	}
 
 	public int size() {
 		return count;
