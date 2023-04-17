@@ -18,20 +18,20 @@ public class A1Tester {
 		 * in the A1Exercises.java file to get an idea of what is expected
 		 * for the other parts of the assignment you will complete yourself
 		 */
-		// testIsFactor();
-		// testCalcPower();
+		testIsFactor();
+		testCalcPower();
 
 		/* I have also provided you with some tests for numFactors */
-		// testNumFactors();
+		testNumFactors();
 
 		/* Uncomment the method call below when you have finished numFactors */
-		// testIsPrime();
+		testIsPrime();
 
 		/*
 		 * Uncomment the method call below when you have finished isPrime
 		 * You will need to write tests for this method
 		 */
-		// testGreatestCommonDenominator();
+		testGreatestCommonDenominator();
 
 		// PART 2 - arrays
 
@@ -39,10 +39,10 @@ public class A1Tester {
 		 * Some examples to demonstrate how to intialize and test arrays.
 		 * The printArrays method have been completed for you.
 		 */
-		// printArrayExample();
-		// testSumArray();
+		printArrayExample();
+		testSumArray();
 
-		// testContains();
+		testContains();
 		testCountMatches();
 
 	}

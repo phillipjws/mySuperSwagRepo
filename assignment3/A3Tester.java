@@ -20,15 +20,15 @@ public class A3Tester {
 		*/
 		
 		/* Part 1: */
-		// testAddFront();
-		// testAddBack();
-		// testSizeAndIsEmpty();
-		// testRemoveFront();
-		// testRemoveBack();
+		testAddFront();
+		testAddBack();
+		testSizeAndIsEmpty();
+		testRemoveFront();
+		testRemoveBack();
 		
 		/* Part 2 */
-		// testRemoveAt();
-		// testMergeSorted();
+		testRemoveAt();
+		testMergeSorted();
 		
 		System.out.println("Passed " + testPassCount + " / " + testCount + " tests");
     }

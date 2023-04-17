@@ -7,11 +7,11 @@ public class A4Tester {
 		testPassCount = 0;
 		
 		/* Part 1: Using the A4List ADT */		
-		// testBuildingsCount();
-		// testInhabitantsCount();
-		// testDistanceAway();
-		// testDistanceToTallest();
-		// testNumberVisible();
+		testBuildingsCount();
+		testInhabitantsCount();
+		testDistanceAway();
+		testDistanceToTallest();
+		testNumberVisible();
 		
 		/* Part 2: Implementing the Generic Stack ADT */
 		testStackOperations();
