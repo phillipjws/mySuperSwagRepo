@@ -9,12 +9,12 @@
  * the cinema at the same time.
  */
 public class CinemaLine {
-	List<Person> list;
+	A6List<Person> A6List;
 	//Do not add any other fields
 
 	public CinemaLine() {
 		//Do not change the constructor in any way
-		list = new LinkedList<Person>();
+		A6List = new LinkedList<Person>();
 	}
 	
 	/*
@@ -23,7 +23,7 @@ public class CinemaLine {
 	 * Returns void - nothing
 	 */
 	public void enterLine(Person p) {
-		// TODO: implement this
+		A6List.addFront(p);
 	}
 	
 	/*
@@ -37,8 +37,11 @@ public class CinemaLine {
 	 *                   from the line
 	 */
 	public Person handleOne() {
-		// TODO: implement this
-		return null; // so it compiles
+		try {
+			return A6List.removeFront();
+		} catch (Exception e) {
+			return null;
+		}
 	}
 	
 	/*
@@ -50,8 +53,14 @@ public class CinemaLine {
 	 *               able to be removed from the line
 	 */
 	public int handleMultiple(int num) {
-		// TODO: implement this
-		return -1; // so it compiles
+		for (int i = 0; i < num; i++)
+		{
+			if (handleOne() == null)
+			{
+				return i;
+			}
+		}
+		return num;
 	}
 	
 	/*
@@ -62,8 +71,12 @@ public class CinemaLine {
 	 * Returns boolean - true if person added to line, false otherwise
 	 */
 	public boolean premiumEntry(Person p, int pos) {
-		// TODO: implement this
-		return false; // so it compiles
+		try {
+			A6List.insertAt(pos, p);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 	
 	/*
@@ -73,7 +86,7 @@ public class CinemaLine {
 	 */
 	public int peopleInLine() {
 		// TODO: implement this
-		return -1; // so it compiles
+		return A6List.size();
 	}
 }
 	

@@ -1,39 +1,39 @@
-public interface List<T> {
+public interface A6List<T> {
     
 	/*
-	 * Purpose:  add val to the front of the list
+	 * Purpose:  add val to the front of the A6List
 	 * Parameters: T val - the value to insert
 	 * Returns: void - nothing
 	 */
 	void addFront (T val);
 
 	/*
-	 * Purpose:  add val to the back of the list
+	 * Purpose:  add val to the back of the A6List
 	 * Parameters: T val - the value to insert
 	 * Returns: void - nothing
 	 */
 	void addBack (T val);
 	
 	/*
-	 * Purpose: remove and return the front element from the list
+	 * Purpose: remove and return the front element from the A6List
 	 * Parameters: none
 	 * Returns: T - the value of the element removed
-	 * Throws: ListEmptyException - if there is nothing to remove
+	 * Throws: A6ListEmptyException - if there is nothing to remove
 	 */
-	T removeFront() throws ListEmptyException;
+	T removeFront() throws A6ListEmptyException;
 	
 	/*
-	 * Purpose: remove and return the back element from the list
+	 * Purpose: remove and return the back element from the A6List
 	 * Parameters: none
 	 * Returns: T - the value of the element removed
-	 * Throws: ListEmptyException - if there is nothing to remove
+	 * Throws: A6ListEmptyException - if there is nothing to remove
 	 */
-	T removeBack() throws ListEmptyException;
+	T removeBack() throws A6ListEmptyException;
 	
 	/*
-	 * Purpose: get the number of elements in the list
+	 * Purpose: get the number of elements in the A6List
 	 * Parameters: none
-	 * Returns: int - number of elements in list
+	 * Returns: int - number of elements in A6List
 	 */
 	int size ();
 	

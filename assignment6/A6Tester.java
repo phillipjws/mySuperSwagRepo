@@ -3,57 +3,57 @@ public class A6Tester {
 	private static int testCount = 0;	
 	
 	public static void main(String[] args) {
-		listTests();
+		A6ListTests();
 		cinemaTests();
 		
 		System.out.println("Passed " + testPassCount + " / " + testCount + " tests");
 	}
 	
-	public static void listTests() {
-		System.out.println("\nTesting linked list implementation");
+	public static void A6ListTests() {
+		System.out.println("\nTesting linked A6List implementation");
 		
-		LinkedList<Integer> list1 = new LinkedList<Integer>();
-		LinkedList<Integer> list2 = new LinkedList<Integer>();
-		LinkedList<Integer> list3 = new LinkedList<Integer>();
-		LinkedList<Integer> list4 = new LinkedList<Integer>();
+		LinkedList<Integer> A6List1 = new LinkedList<Integer>();
+		LinkedList<Integer> A6List2 = new LinkedList<Integer>();
+		LinkedList<Integer> A6List3 = new LinkedList<Integer>();
+		LinkedList<Integer> A6List4 = new LinkedList<Integer>();
 		
 		String expected = "";
 		String result = "";
 		
-		displayResults(list1.size()==0, "size of empty list");
+		displayResults(A6List1.size()==0, "size of empty A6List");
 		
-		list1.addFront(2);
-		list2.addFront(2);
-		displayResults(list1.size()==1, "size after inserting to front");
+		A6List1.addFront(2);
+		A6List2.addFront(2);
+		displayResults(A6List1.size()==1, "size after inserting to front");
 		
-		list3.addBack(3);
-		list4.addBack(3);
-		displayResults(list3.size()==1, "size after inserting to back");
+		A6List3.addBack(3);
+		A6List4.addBack(3);
+		displayResults(A6List3.size()==1, "size after inserting to back");
 		
-		list1.addFront(1);
-		result = list1.toString();
+		A6List1.addFront(1);
+		result = A6List1.toString();
 		expected = "{1 2}";
-		displayResults(result.equals(expected), "elements in list correct");
+		displayResults(result.equals(expected), "elements in A6List correct");
 		
-		list2.addBack(3);
-		result = list2.toString();
+		A6List2.addBack(3);
+		result = A6List2.toString();
 		expected = "{2 3}";
-		displayResults(result.equals(expected), "elements in list correct");
+		displayResults(result.equals(expected), "elements in A6List correct");
 	
-		list3.addFront(2);
-		result = list3.toString();
+		A6List3.addFront(2);
+		result = A6List3.toString();
 		expected = "{2 3}";
-		displayResults(result.equals(expected), "elements in list correct");
+		displayResults(result.equals(expected), "elements in A6List correct");
 		
-		list4.addBack(4);
-		result = list4.toString();
+		A6List4.addBack(4);
+		result = A6List4.toString();
 		expected = "{3 4}";
-		displayResults(result.equals(expected), "elements in list correct");
+		displayResults(result.equals(expected), "elements in A6List correct");
 		
 		try {
-			list1.insertAt(0, 8);
-			displayResults(list1.size()==3, "size after third insert");
-			result = list1.toString();
+			A6List1.insertAt(0, 8);
+			displayResults(A6List1.size()==3, "size after third insert");
+			result = A6List1.toString();
 			expected = "{8 1 2}";
 			displayResults(result.equals(expected), "contents after third insert");
 		} catch (InvalidPositionException e) {
@@ -63,9 +63,9 @@ public class A6Tester {
 		}
 		
 		try {
-			list2.insertAt(1, 8);
-			displayResults(list2.size()==3, "size after third insert");
-			result = list2.toString();
+			A6List2.insertAt(1, 8);
+			displayResults(A6List2.size()==3, "size after third insert");
+			result = A6List2.toString();
 			expected = "{2 8 3}";
 			displayResults(result.equals(expected), "contents after third insert");
 		} catch (InvalidPositionException e) {
@@ -75,9 +75,9 @@ public class A6Tester {
 		}
 		
 		try {
-			list3.insertAt(2, 8);
-			displayResults(list3.size()==3, "size after third insert");
-			result = list3.toString();
+			A6List3.insertAt(2, 8);
+			displayResults(A6List3.size()==3, "size after third insert");
+			result = A6List3.toString();
 			expected = "{2 3 8}";
 			displayResults(result.equals(expected), "contents after third insert");
 		} catch (InvalidPositionException e) {
@@ -87,13 +87,13 @@ public class A6Tester {
 		}
 		
 		try {
-			list4.insertAt(3, 8);
+			A6List4.insertAt(3, 8);
 			displayResults(false, "size after third insert");
 			displayResults(false, "contents after third insert");
 		} catch (InvalidPositionException e) {
 			System.out.println("exception thrown");
-			displayResults(list4.size()==2, "size after third insert");
-			result = list4.toString();
+			displayResults(A6List4.size()==2, "size after third insert");
+			result = A6List4.toString();
 			expected = "{3 4}";
 			displayResults(result.equals(expected), "contents after third insert");
 		}
@@ -102,57 +102,57 @@ public class A6Tester {
 		Integer removed = null;
 		
 		try {
-			removed = list1.removeFront();
-			removed = list1.removeFront();
-			removed = list1.removeFront();
-			displayResults(list1.size()==0, "size after removeFronts");
+			removed = A6List1.removeFront();
+			removed = A6List1.removeFront();
+			removed = A6List1.removeFront();
+			displayResults(A6List1.size()==0, "size after removeFronts");
 			displayResults(removed.equals(2), "element returned after removeFronts");
-		} catch (ListEmptyException e) {
+		} catch (A6ListEmptyException e) {
 			System.out.println("exception thrown");
 			displayResults(false, "size after removeFronts");
 			displayResults(false, "element returned after removeFronts");
 		}
 
 		try {
-			removed = list2.removeBack();
-			removed = list2.removeBack();
-			removed = list2.removeBack();
-			displayResults(list2.size()==0, "size after removeBacks");
+			removed = A6List2.removeBack();
+			removed = A6List2.removeBack();
+			removed = A6List2.removeBack();
+			displayResults(A6List2.size()==0, "size after removeBacks");
 			displayResults(removed.equals(2), "element returned after removeBacks");
-		} catch (ListEmptyException e) {
+		} catch (A6ListEmptyException e) {
 			System.out.println("exception thrown");
 			displayResults(false, "size after removeBacks");
 			displayResults(false, "element returned after removeBacks");
 		}
 
 		try {
-			removed = list3.removeBack();
-			removed = list3.removeFront();
-			removed = list3.removeBack();
-			displayResults(list3.size()==0, "size after removals");
+			removed = A6List3.removeBack();
+			removed = A6List3.removeFront();
+			removed = A6List3.removeBack();
+			displayResults(A6List3.size()==0, "size after removals");
 			displayResults(removed.equals(3), "element returned after removals");
-		} catch (ListEmptyException e) {
+		} catch (A6ListEmptyException e) {
 			System.out.println("exception thrown");
 			displayResults(false, "size after removals");
 			displayResults(false, "element returned after removals");
 		}
 		
 		try {
-			removed = list4.removeFront();
-			removed = list4.removeBack();
-			removed = list4.removeFront();
+			removed = A6List4.removeFront();
+			removed = A6List4.removeBack();
+			removed = A6List4.removeFront();
 			displayResults(false, "size after removals");
 			displayResults(false, "element returned after removals");
-		} catch (ListEmptyException e) {
+		} catch (A6ListEmptyException e) {
 			System.out.println("exception thrown");
-			displayResults(list4.size()==0, "size after removals");
+			displayResults(A6List4.size()==0, "size after removals");
 			displayResults(removed.equals(4), "element returned after removals");
 		}
 		
 		try {
-			list1.addBack(9);
-			displayResults(list1.size()==1, "size after insert at removeAll");
-			result = list1.toString();
+			A6List1.addBack(9);
+			displayResults(A6List1.size()==1, "size after insert at removeAll");
+			result = A6List1.toString();
 			expected = "{9}";
 			displayResults(expected.equals(result), "contents after insert at removeAll");
 		} catch (Exception e) {
@@ -162,9 +162,9 @@ public class A6Tester {
 		}
 		
 		try {
-			list2.addBack(9);
-			displayResults(list2.size()==1, "size after insert at removeAll");
-			result = list2.toString();
+			A6List2.addBack(9);
+			displayResults(A6List2.size()==1, "size after insert at removeAll");
+			result = A6List2.toString();
 			expected = "{9}";
 			displayResults(expected.equals(result), "contents after insert at removeAll");
 		} catch (Exception e) {
@@ -174,9 +174,9 @@ public class A6Tester {
 		}
 		
 		try {
-			list3.addFront(9);
-			displayResults(list3.size()==1, "size after insert at removeAll");
-			result = list3.toString();
+			A6List3.addFront(9);
+			displayResults(A6List3.size()==1, "size after insert at removeAll");
+			result = A6List3.toString();
 			expected = "{9}";
 			displayResults(expected.equals(result), "contents after insert at removeAll");
 		} catch (Exception e) {
@@ -186,9 +186,9 @@ public class A6Tester {
 		}
 
 		try {
-			list4.addFront(9);
-			displayResults(list4.size()==1, "size after insert at removeAll");
-			result = list4.toString();
+			A6List4.addFront(9);
+			displayResults(A6List4.size()==1, "size after insert at removeAll");
+			result = A6List4.toString();
 			expected = "{9}";
 			displayResults(expected.equals(result), "contents after insert at removeAll");
 		} catch (Exception e) {
@@ -198,51 +198,51 @@ public class A6Tester {
 		}	
 		
 		try {
-			list1.removeFront();
-			list1.removeFront();
-			displayResults(false, "correct exception thrown when removing from empty list");
-		} catch (ListEmptyException e) {
+			A6List1.removeFront();
+			A6List1.removeFront();
+			displayResults(false, "correct exception thrown when removing from empty A6List");
+		} catch (A6ListEmptyException e) {
 			System.out.println("exception thrown");
-			displayResults(true, "correct exception thrown when removing from empty list");
+			displayResults(true, "correct exception thrown when removing from empty A6List");
 		} catch (Exception e) {
 			System.out.println("exception thrown");
-			displayResults(false, "correct exception thrown when removing from empty list");
+			displayResults(false, "correct exception thrown when removing from empty A6List");
 		}
 		
 		try {
-			list2.removeBack();
-			list2.removeBack();
-			displayResults(false, "correct exception thrown when removing from empty list");
-		} catch (ListEmptyException e) {
+			A6List2.removeBack();
+			A6List2.removeBack();
+			displayResults(false, "correct exception thrown when removing from empty A6List");
+		} catch (A6ListEmptyException e) {
 			System.out.println("exception thrown");
-			displayResults(true, "correct exception thrown when removing from empty list");
+			displayResults(true, "correct exception thrown when removing from empty A6List");
 		} catch (Exception e) {
 			System.out.println("exception thrown");
-			displayResults(false, "correct exception thrown when removing from empty list");
+			displayResults(false, "correct exception thrown when removing from empty A6List");
 		}
 		
 		try {
-			list3.removeBack();
-			list3.removeFront();
-			displayResults(false, "correct exception thrown when removing from empty list");
-		} catch (ListEmptyException e) {
+			A6List3.removeBack();
+			A6List3.removeFront();
+			displayResults(false, "correct exception thrown when removing from empty A6List");
+		} catch (A6ListEmptyException e) {
 			System.out.println("exception thrown");
-			displayResults(true, "correct exception thrown when removing from empty list");
+			displayResults(true, "correct exception thrown when removing from empty A6List");
 		} catch (Exception e) {
 			System.out.println("exception thrown");
-			displayResults(false, "correct exception thrown when removing from empty list");
+			displayResults(false, "correct exception thrown when removing from empty A6List");
 		}
 		
 		try {
-			list4.removeFront();
-			list4.removeBack();
-			displayResults(false, "correct exception thrown when removing from empty list");
-		} catch (ListEmptyException e) {
+			A6List4.removeFront();
+			A6List4.removeBack();
+			displayResults(false, "correct exception thrown when removing from empty A6List");
+		} catch (A6ListEmptyException e) {
 			System.out.println("exception thrown");
-			displayResults(true, "correct exception thrown when removing from empty list");
+			displayResults(true, "correct exception thrown when removing from empty A6List");
 		} catch (Exception e) {
 			System.out.println("exception thrown");
-			displayResults(false, "correct exception thrown when removing from empty list");
+			displayResults(false, "correct exception thrown when removing from empty A6List");
 		}
 	
 	}

@@ -1,7 +1,7 @@
-class ListEmptyException extends Exception {}
+class A6ListEmptyException extends Exception {}
 class InvalidPositionException extends Exception {}
 
-public class LinkedList<T> implements List<T> {
+public class LinkedList<T> implements A6List<T> {
 	private int numElements;
 	private Node<T> head;
 	private Node<T> tail;
@@ -39,7 +39,11 @@ public class LinkedList<T> implements List<T> {
 	}
 	
 	public void insertAt(int position, T val) throws InvalidPositionException {
-		if (position == 0) {
+		if (position > numElements)
+		{
+			throw new InvalidPositionException();
+		}
+		else if (position == 0) {
 			addFront(val);
 		} else if (position == numElements) {
 			addBack(val);
@@ -57,9 +61,9 @@ public class LinkedList<T> implements List<T> {
 		}
 	}
 	
-	public T removeFront() throws ListEmptyException {
+	public T removeFront() throws A6ListEmptyException {
 		if (head == null) {
-			return null;
+			throw new A6ListEmptyException();
 		}
 		T toReturn = head.getData();
 		if (head.next == null) {
@@ -70,9 +74,9 @@ public class LinkedList<T> implements List<T> {
 		return toReturn;
 	}
 	
-	public T removeBack() throws ListEmptyException {
+	public T removeBack() throws A6ListEmptyException {
 		if (head == null) {
-			return null;
+			throw new A6ListEmptyException();
 		}
 		T toReturn = tail.getData();
 		if (head.next == null) {
@@ -91,7 +95,7 @@ public class LinkedList<T> implements List<T> {
 	}
 
 	/* Parameters: nothing
-	 * Purpose: create a string representation of list
+	 * Purpose: create a string representation of A6List
 	 * Returns: (String) the string representation
 	 */
 	public String toString() {
