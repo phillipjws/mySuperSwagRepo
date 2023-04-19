@@ -39,7 +39,7 @@ public class LinkedList<T> implements A6List<T> {
 	}
 	
 	public void insertAt(int position, T val) throws InvalidPositionException {
-		if (position > numElements)
+		if (position > numElements || position < 0)
 		{
 			throw new InvalidPositionException();
 		}

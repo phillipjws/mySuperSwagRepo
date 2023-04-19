@@ -23,7 +23,7 @@ public class CinemaLine {
 	 * Returns void - nothing
 	 */
 	public void enterLine(Person p) {
-		A6List.addFront(p);
+		A6List.addBack(p);
 	}
 	
 	/*
