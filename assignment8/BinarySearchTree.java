@@ -32,7 +32,31 @@ class BinarySearchTree <K extends Comparable<K>, V>  {
 	 * Pre-Conditions: the tree is a valid binary search tree
 	 */
 	public void insert (K key, V value) {
-		// TODO: implement this
+		BSTNode<K,V> newNode = new BSTNode<K,V>(key, value);
+		root = insertHelper(newNode, root);
+		count++;
+	}
+
+	private BSTNode<K,V> insertHelper(BSTNode<K,V> newNode, BSTNode<K,V> cur)
+	{
+		if(cur == null)
+		{
+			return newNode;
+		}
+		if(newNode.key.equals(cur.key))
+		{
+			cur.value = newNode.value;
+			count--;
+		}
+		if (newNode.key.compareTo(cur.key) < 0)
+		{
+			cur.left = insertHelper(newNode, cur.left);
+		}
+		if(newNode.key.compareTo(cur.key) > 0)
+		{
+			cur.right = insertHelper(newNode, cur.right);
+		}
+		return cur;
 	}
 
 	/* 	
@@ -43,8 +67,33 @@ class BinarySearchTree <K extends Comparable<K>, V>  {
 	 * Throws: KeyNotFoundException if key isn't in the tree
 	 */
 	public V find (K key) throws KeyNotFoundException {
-		// TODO: implement this
-		throw new KeyNotFoundException();
+		V value = findHelper(key, root);
+		if (value == null)
+		{
+			throw new KeyNotFoundException();
+		}
+		return value;
+	}
+
+	private V findHelper(K key, BSTNode<K,V> cur)
+	{
+		if(cur == null)
+		{
+			return null;
+		}
+		if(key.equals(cur.key))
+		{
+			return cur.value;
+		}
+		if (key.compareTo(cur.key) < 0)
+		{
+			return findHelper(key, cur.left);
+		}
+		if(key.compareTo(cur.key) > 0)
+		{
+			return findHelper(key, cur.right);
+		}
+		return null;
 	}
 
 	/* 	
@@ -53,8 +102,7 @@ class BinarySearchTree <K extends Comparable<K>, V>  {
 	 * Returns: int - the number of nodes in the tree. 
 	 */
 	public int size() {
-		// TODO: implement this
-		return -1; // so it compiles
+		return count; 
 	}
 
 	/*
@@ -63,7 +111,7 @@ class BinarySearchTree <K extends Comparable<K>, V>  {
 	 * Returns: nothing
 	 */
 	public void clear() {
-		// TODO: implement this
+		root = null;
 	}
 
 	/* 
@@ -79,8 +127,16 @@ class BinarySearchTree <K extends Comparable<K>, V>  {
 	 * See the assignment PDF and the test program for examples.
 	 */
 	public int height() {
-		// TODO: implement this
-		return -1; // so it compiles
+		return heightHelper(root);
+	}
+
+	private int heightHelper(BSTNode<K,V> cur)
+	{
+		if (cur == null)
+		{
+			return -1;
+		}
+		return 1 + Math.max(heightHelper(cur.right), heightHelper(cur.left));
 	}
 
 	/* 
@@ -122,6 +178,24 @@ class BinarySearchTree <K extends Comparable<K>, V>  {
 		
 		// queue of nodes that need to be added
 		LinkedList<BSTNode<K,V>> q = new LinkedList<BSTNode<K,V> >();
+		BSTNode<K,V> cur = new BSTNode<K,V>();
+
+		q.addLast(root);
+
+		while(q.isEmpty() == false)
+		{
+			cur = q.removeFirst();
+			l.add(new Entry<K,V>(cur.key, cur.value));
+
+			if (cur.left != null)
+			{
+				q.addLast(cur.left);
+			}
+			if (cur.right != null)
+			{
+				q.addLast(cur.right);
+			}
+		}
 		
 		// TODO: implement this
 		return l;
@@ -155,17 +229,36 @@ class BinarySearchTree <K extends Comparable<K>, V>  {
 	}
 
 	private void inOrderRec (BSTNode<K,V> n, List <Entry<K,V>> entries) {
-		// TODO: implement this so it adds all of the elements in
-		// the tree to the entries list with an in-order traversal
+		if (n == null)
+		{
+			return;
+		}
+		inOrderRec(n.left, entries);
+		Entry<K,V> newEntry = new Entry<K,V>(n.key, n.value);
+		entries.add(newEntry);
+		inOrderRec(n.right, entries);
+	
 	}
 
 	private void preOrderRec (BSTNode<K,V> n, List <Entry<K,V>> entries) {
-		// TODO: implement this so it adds all of the elements in
-		// the tree to the entries list with a pre-order traversal
+		if (n == null)
+		{
+			return;
+		}
+		Entry<K,V> newEntry = new Entry<K,V>(n.key, n.value);
+		entries.add(newEntry);
+		preOrderRec(n.left, entries);
+		preOrderRec(n.right, entries);
 	}
 
 	private void postOrderRec (BSTNode<K,V> n, List <Entry<K,V>> entries) {
-		// TODO: implement this so it adds all of the elements in
-		// the tree to the entries list with a post-order traversal
+		if (n == null)
+		{
+			return;
+		}
+		postOrderRec(n.left, entries);
+		postOrderRec(n.right, entries);
+		Entry<K,V> newEntry = new Entry<K,V>(n.key, n.value);
+		entries.add(newEntry);
 	}
 }

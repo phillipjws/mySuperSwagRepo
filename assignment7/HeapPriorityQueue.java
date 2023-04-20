@@ -21,7 +21,7 @@ public class HeapPriorityQueue<T extends Comparable<T>> implements PriorityQueue
 	
 	// Feel free to change rootIndex to 0 if you want to 
 	// use 0-based indexing (either option is fine)
-	private static final int rootIndex = 1;
+	private static final int rootIndex = 0;
 
 	/*
 	 * Constructor that initializes the array to hold DEFAULT_SIZE elements
@@ -57,6 +57,19 @@ public class HeapPriorityQueue<T extends Comparable<T>> implements PriorityQueue
 
 	public void insert (T element) throws HeapFullException {
 		// TODO: implement this
+		if (isFull())
+		{
+			throw new HeapEmptyException();
+		}
+		else if(isEmpty())
+		{
+			storage[0] = element;
+			currentSize++;
+		}
+		else
+		{
+
+		}
 		
 		// When inserting the first element, choose whether to use 
 		// a 0-based on 1-based implementation. (By default, the root
@@ -82,19 +95,19 @@ public class HeapPriorityQueue<T extends Comparable<T>> implements PriorityQueue
 	public boolean isEmpty(){
 		// TODO: implement this
 		
-		return false; // so it compiles
+		return currentSize == 0; // so it compiles
 	}
 	
 	public boolean isFull() {
 		// TODO: implement this
 		
-		return false; // so it compiles
+		return currentSize>storage.length; // so it compiles
 	}
 	
 	public int size () {
 		// TODO: implement this
 		
-		return -1; // so it compiles
+		return currentSize; // so it compiles
 	}
 
 	public String toString() {
