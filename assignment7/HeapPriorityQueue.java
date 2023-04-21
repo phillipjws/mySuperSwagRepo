@@ -1,3 +1,5 @@
+import javax.swing.border.StrokeBorder;
+
 /*
 * HeapPriorityQueue.java
 *
@@ -68,7 +70,9 @@ public class HeapPriorityQueue<T extends Comparable<T>> implements PriorityQueue
 		}
 		else
 		{
-
+			storage[currentSize] = element;
+			bubbleUp(currentSize);
+			currentSize++;
 		}
 		
 		// When inserting the first element, choose whether to use 
@@ -79,18 +83,87 @@ public class HeapPriorityQueue<T extends Comparable<T>> implements PriorityQueue
     }
 	
 	private void bubbleUp(int index) {
-		// TODO: implement this
+		if (index == 0)
+		{
+			return;
+		}
+		int parentIndex = (index-1)/2;
+		T temp;
+		if (storage[index].compareTo(storage[parentIndex]) < 0)
+		{
+			temp = storage[parentIndex];
+			storage[parentIndex] = storage[index];
+			storage[index] = temp;
+			bubbleUp(parentIndex);
+		}
+		return;
 	}
+
 			
 	public T removeMin() throws HeapEmptyException {
-		// TODO: implement this
+		T removed;
+		if (isEmpty())
+		{
+			throw new HeapEmptyException();
+		}
+		else
+		{
+			removed = storage[0];
+			storage[0] = storage[currentSize-1];
+			storage[currentSize-1] = null;
+			currentSize--;
+			bubbleDown(0);
+		}
 		
-		return null; // so it compiles
+		return removed; // so it compiles
 	}
 	
 	private void bubbleDown(int index) {
-		// TODO: implement this
+		int leftIndex = (index + 1) * 2 - 1;
+		int rightIndex = (index + 1) * 2;
+	
+		if (leftIndex >= currentSize && rightIndex >= currentSize) {
+			return;
+		}
+	
+		T nodeValue = storage[index];
+		T leftChildValue = null;
+		T rightChildValue = null;
+	
+		if (leftIndex < currentSize) {
+			leftChildValue = storage[leftIndex];
+		}
+		if (rightIndex < currentSize) {
+			rightChildValue = storage[rightIndex];
+		}
+	
+		if (leftChildValue == null && rightChildValue == null) {
+			return;
+		} else if (rightChildValue == null) {
+			if (leftChildValue.compareTo(nodeValue) < 0) {
+				storage[index] = leftChildValue;
+				storage[leftIndex] = nodeValue;
+				bubbleDown(leftIndex);
+			}
+		} else if (leftChildValue == null) {
+			if (rightChildValue.compareTo(nodeValue) < 0) {
+				storage[index] = rightChildValue;
+				storage[rightIndex] = nodeValue;
+				bubbleDown(rightIndex);
+			}
+		} else {
+			if (leftChildValue.compareTo(nodeValue) < 0 && leftChildValue.compareTo(rightChildValue) <= 0) {
+				storage[index] = leftChildValue;
+				storage[leftIndex] = nodeValue;
+				bubbleDown(leftIndex);
+			} else if (rightChildValue.compareTo(nodeValue) < 0 && rightChildValue.compareTo(leftChildValue) < 0) {
+				storage[index] = rightChildValue;
+				storage[rightIndex] = nodeValue;
+				bubbleDown(rightIndex);
+			}
+		}
 	}
+	
 
 	public boolean isEmpty(){
 		// TODO: implement this
